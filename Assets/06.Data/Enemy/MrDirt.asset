@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: MrDirt
   m_EditorClassIdentifier: 
   enemyName: MrDirt
+  dirtyLevel: 0
   maxDirtyGuage: 100
   moveSpeed: 3
+  changeCleanAnimator: {fileID: 22100000, guid: 8057be6cdaf9647489b932cb87f94e6a, type: 2}
