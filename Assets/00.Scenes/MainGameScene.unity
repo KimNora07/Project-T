@@ -449,14 +449,16 @@ MonoBehaviour:
   minFlyDeg: -60
   maxFlyDeg: -120
   flyLimitY: 3.3
-  flyPower: 3
+  flyPower: 0.5
   flyingGravityScale: 0
+  jumpPower: 0
   fallingGravityScale: 2
   groundCheckRange: 1.15
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  flyKey: 32
+  jumpKey: 0
+  fireCoolTime: 0.1
   bulletSpreadAngleRange: 6
   bubblePrefab: {fileID: 6645104338396821559, guid: 0af12db0fb9119d48a71ceff794388a5, type: 3}
   bubbleGunPosition: {fileID: 1317494200}
