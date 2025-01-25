@@ -128,6 +128,6 @@ MonoBehaviour:
   collidingLayer:
     serializedVersion: 2
     m_Bits: 64
-  checkRange: 0.28
+  checkRange: 0.16
   bubbleSpeed: 8
   bubbleDistroyTime: 4

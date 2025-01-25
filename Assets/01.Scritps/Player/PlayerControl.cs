@@ -27,6 +27,7 @@ namespace ProjectT.Player
         [SerializeField] private float jumpPower                  = default;
         [SerializeField] private float fallingGravityScale        = default;
         [SerializeField] private float groundCheckRange           = default;
+        [SerializeField] private Vector3 groundCheckOffset        = default;
         [SerializeField] private LayerMask groundLayer            = default;
         [SerializeField] private KeyCode jumpKey                  = KeyCode.None;
 
@@ -41,15 +42,18 @@ namespace ProjectT.Player
         private float originGravityScale = default;
 
         private Rigidbody2D rb = null;
+        private Animator anim  = null;
 
         private float angle     = default;
         private float timer     = default;
 
         private bool isCanFire  = default;
+        private bool isFlying   = default;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
         }
 
         private void Start()
@@ -61,9 +65,12 @@ namespace ProjectT.Player
         {
             Mathf.FloorToInt(angle);
 
+            Debug.Log(CheckGround());
+
             //reset GraityScale
             if (CheckGround())
             {
+                anim.SetBool("isFlying", false);
                 rb.gravityScale = originGravityScale;
             }
 
@@ -73,6 +80,7 @@ namespace ProjectT.Player
             }
             else
             {
+                isFlying = false;
                 rb.gravityScale = fallingGravityScale;
             }
 
@@ -84,7 +92,8 @@ namespace ProjectT.Player
         {
             if (Input.GetMouseButtonDown(0))
             {
-
+                isFlying = true;
+                anim.SetBool("isFlying", true);
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = originGravityScale;
 
@@ -95,6 +104,7 @@ namespace ProjectT.Player
             }
             else
             {
+                isFlying = false;
                 rb.gravityScale = fallingGravityScale;
             }
         }
@@ -102,7 +112,14 @@ namespace ProjectT.Player
         //Check Ground
         private bool CheckGround()
         {
-            return Physics2D.Raycast(transform.position, Vector2.down, groundCheckRange, groundLayer);
+            if (!isFlying)
+            {
+                return Physics2D.Raycast(bubbleGunPosition.position, Vector2.down, groundCheckRange, groundLayer);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void SpinGun()
@@ -149,7 +166,7 @@ namespace ProjectT.Player
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, Vector2.down * groundCheckRange);
+            Gizmos.DrawRay(bubbleGunPosition.position, Vector2.down * groundCheckRange);
         }
     }
 }

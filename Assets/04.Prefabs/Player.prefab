@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2587963211507398570}
   - component: {fileID: 4050278146302788607}
   - component: {fileID: 3903087322687122549}
-  - component: {fileID: 534306679058857534}
   - component: {fileID: 3695118831795986071}
+  - component: {fileID: 534306679058857534}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -148,36 +148,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21604466, y: -0.41199207}
+  m_Offset: {x: 0.1, y: -0.41199207}
   m_Size: {x: 0.9296603, y: 2.0803885}
   m_Direction: 0
---- !u!114 &534306679058857534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8026723835402103831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14ac7824e8b2dc4fb5d54404bab7198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minFlyDeg: -60
-  maxFlyDeg: -120
-  flyLimitY: 3.3
-  flyPower: 3
-  flyingGravityScale: 0
-  fallingGravityScale: 2
-  groundCheckRange: 1.15
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  flyKey: 32
-  bulletSpreadAngleRange: 6
-  bubblePrefab: {fileID: 6645104338396821559, guid: 0af12db0fb9119d48a71ceff794388a5, type: 3}
-  bubbleGunPosition: {fileID: 1960391220690625083}
-  firePosition: {fileID: 2511766010049824117}
 --- !u!95 &3695118831795986071
 Animator:
   serializedVersion: 5
@@ -199,6 +172,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &534306679058857534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026723835402103831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14ac7824e8b2dc4fb5d54404bab7198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minFlyDeg: -60
+  maxFlyDeg: -120
+  flyLimitY: 3.3
+  flyPower: 3
+  flyingGravityScale: 0
+  jumpPower: 0
+  fallingGravityScale: 2
+  groundCheckRange: 1.23
+  groundCheckOffset: {x: 0, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  jumpKey: 0
+  fireCoolTime: 0
+  bulletSpreadAngleRange: 6
+  bubblePrefab: {fileID: 6645104338396821559, guid: 0af12db0fb9119d48a71ceff794388a5, type: 3}
+  bubbleGunPosition: {fileID: 1960391220690625083}
+  firePosition: {fileID: 2511766010049824117}
 --- !u!1001 &3780600543328067010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3405795834765836281, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.085
       objectReference: {fileID: 0}
     - target: {fileID: 3405795834765836281, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 3405795834765836281, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -250,6 +253,14 @@ PrefabInstance:
     - target: {fileID: 3405795834765836281, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645359579045017295, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645359579045017295, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7997347040314148047, guid: a467238c13da8dd458d3c821d932db3d, type: 3}
       propertyPath: m_Animations.Array.size
