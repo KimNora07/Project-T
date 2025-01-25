@@ -6,13 +6,32 @@ public class Tornado : BossEnemy
 {
     public GameObject dustPrefab;
 
-    private void Update()
+    public GameObject effectObject1;
+    public GameObject effectObject2;
+
+    private IEnumerator SummonTime()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameObject go = Instantiate(dustPrefab);
-            go.transform.position = this.transform.position;
-        }
-        
+        float rand = Random.Range(0.5f, 2f);
+        yield return new WaitForSeconds(rand);
+
+        GameObject go = Instantiate(dustPrefab);
+        go.transform.position = this.transform.position;
+
+        StartCoroutine(SummonTime());
+    }
+
+    public void SummonDust()
+    {
+        StartCoroutine(SummonTime());
+    }
+
+    public void OnEffect1()
+    {
+        effectObject1.SetActive(true);
+    }
+
+    public void OnEffect2()
+    {
+        effectObject2.SetActive(true);
     }
 }

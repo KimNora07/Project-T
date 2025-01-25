@@ -7,15 +7,17 @@ public class Dust : MonoBehaviour
     private Vector3 targetDistance;
     public float moveSpeed;
 
-    private void OnEnable()
+    private void Awake()
     {
-        target = FindAnyObjectByType<PlayerControl>().transform;
-        targetDistance = (target.position - this.transform.position).normalized;
+        target = FindAnyObjectByType<PlayerControl>().transform;  
+    }
+    private void Start()
+    {
+        targetDistance = (target.transform.position - this.transform.position).normalized;
     }
 
     private void Update()
     {
-        targetDistance = (target.position - this.transform.position).normalized;
         this.transform.position += targetDistance * moveSpeed * Time.deltaTime;
     }
 
@@ -23,7 +25,7 @@ public class Dust : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
