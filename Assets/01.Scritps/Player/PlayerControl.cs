@@ -27,7 +27,7 @@ namespace ProjectT.Player
         [SerializeField] private float jumpPower                  = default;
         [SerializeField] private float fallingGravityScale        = default;
         [SerializeField] private float groundCheckRange           = default;
-        [SerializeField] private Vector3 groundCheckOffset        = default;
+        [SerializeField] private Transform groundCheckPosition    = null;
         [SerializeField] private LayerMask groundLayer            = default;
         [SerializeField] private KeyCode jumpKey                  = KeyCode.None;
 
@@ -66,6 +66,11 @@ namespace ProjectT.Player
             Mathf.FloorToInt(angle);
 
             Debug.Log(CheckGround());
+
+            if(rb.velocity.y < 0)
+            {
+                anim.SetBool("isFlying", true);
+            }
 
             //reset GraityScale
             if (CheckGround())
@@ -114,7 +119,7 @@ namespace ProjectT.Player
         {
             if (!isFlying)
             {
-                return Physics2D.Raycast(bubbleGunPosition.position, Vector2.down, groundCheckRange, groundLayer);
+                return Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRange, groundLayer);
             }
             else
             {
@@ -166,7 +171,7 @@ namespace ProjectT.Player
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(bubbleGunPosition.position, Vector2.down * groundCheckRange);
+            Gizmos.DrawWireSphere(groundCheckPosition.position, groundCheckRange);
         }
     }
 }
