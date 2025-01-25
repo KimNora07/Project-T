@@ -43,6 +43,7 @@ namespace ProjectT.Player
 
         private Rigidbody2D rb = null;
         private Animator anim  = null;
+        private AudioSource sound = null;
 
         private float angle     = default;
         private float timer     = default;
@@ -54,6 +55,7 @@ namespace ProjectT.Player
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
+            sound = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -138,6 +140,11 @@ namespace ProjectT.Player
                     FireBubble();
                     timer = 0f;
                     isCanFire = false;
+                    sound.UnPause();
+                }
+                else
+                {
+                    sound.Pause();
                 }
             }
             else
