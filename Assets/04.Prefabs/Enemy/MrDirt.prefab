@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3638702112637083225}
   - {fileID: 2923705658287852010}
@@ -48,16 +48,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 9711aef6d59d96f43a55f51130970d05, type: 2}
-  currentEnemyType: 0
   body: {fileID: 1972240358413632477}
   animator: {fileID: 4142934786029119708}
-  bubbleObject: {fileID: 4271840403660058562}
   enemyName: 
   dirtyLevel: 0
   maxDirtyGuage: 0
   currentDirtyGuage: 0
   moveSpeed: 0
   changeCleanAnimator: {fileID: 0}
+  currentEnemyType: 0
+  bubbleObject: {fileID: 4271840403660058562}
 --- !u!50 &1972240358413632477
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 89447944, guid: 6e85fe12849c3f74289638defa23002b, type: 3}
+  m_Sprite: {fileID: 1654251251, guid: e722082c799e05741b6a572256125a91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -225,18 +225,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05932896, y: -0.20209932}
+  m_Offset: {x: -0.03838581, y: -0.62181705}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.5}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3779451, y: 1.0958014}
+  m_Size: {x: 0.77015305, y: 1.7703162}
   m_EdgeRadius: 0
 --- !u!61 &3636824380682122416
 BoxCollider2D:
@@ -270,18 +270,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.059401944, y: -0.7446257}
+  m_Offset: {x: -0.04607448, y: -1.497691}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.5}
+    oldSize: {x: 2, y: 3}
     newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37850526, y: 0.01029253}
+  m_Size: {x: 0.77071315, y: 0.019783258}
   m_EdgeRadius: 0
 --- !u!1 &4271840403660058562
 GameObject:

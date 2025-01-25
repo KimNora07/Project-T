@@ -2,29 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossEnemy : MonoBehaviour
+public class BossEnemy : Enemy
 {
-    public EnemyData data;
     public GameObject target;
 
-    // Data
-    [HideInInspector] public string enemyName;
-    [HideInInspector] public int dirtyLevel;
-    [HideInInspector] public float maxDirtyGuage;
-    [HideInInspector] public float currentDirtyGuage;
-    [HideInInspector] public float moveSpeed;
-
-
-    private void Awake()
+    private void OnEnable()
     {
-        LoadData();
+        ChangeState(new SummonDustState());
     }
 
-    private void LoadData()
+    private void Update()
     {
-        this.enemyName = data.enemyName;
-        this.maxDirtyGuage = data.maxDirtyGuage;
-        this.currentDirtyGuage = maxDirtyGuage;
-        this.moveSpeed = data.moveSpeed;
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            ChangeState(new SplitState());
+        }
     }
 }
