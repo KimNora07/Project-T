@@ -12,8 +12,10 @@ namespace ProjectT.Object
     public class Bubble : MonoBehaviour
     {
         [Header("Bubble Setting")]
-        [SerializeField] private float bubbleSpeed       = default;
-        [SerializeField] private float bubbleDistroyTime = default;
+        [SerializeField] private LayerMask collidingLayer   = default;
+        [SerializeField] private float checkRange           = default;
+        [SerializeField] private float bubbleSpeed          = default;
+        [SerializeField] private float bubbleDistroyTime    = default;
 
         private Rigidbody2D rb = null;
 
@@ -29,7 +31,10 @@ namespace ProjectT.Object
 
         private void Update()
         {
-            
+            if(CheckCollider(collidingLayer))
+            {
+                Pop();
+            }
         }
 
         private void FixedUpdate()
@@ -37,9 +42,20 @@ namespace ProjectT.Object
             transform.Translate(Vector3.right * bubbleSpeed * Time.fixedDeltaTime);
         }
 
+        private bool CheckCollider(LayerMask collidingLayer)
+        {
+            return Physics2D.OverlapCircle(transform.position, checkRange, collidingLayer);
+        }
+
         private void Pop()
         {
+            Destroy(gameObject);
+        }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, checkRange);
         }
     }
 }

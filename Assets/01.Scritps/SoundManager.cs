@@ -20,7 +20,7 @@ namespace ProjectT.Manager
             {
                 instance = this;
                 DontDestroyOnLoad(instance);
-                SceneManager.sceneLoaded += OnSeneLoaded;
+                SceneManager.sceneLoaded += OnSceneLoaded;
             }
             else
             {
@@ -28,7 +28,7 @@ namespace ProjectT.Manager
             }
         }
 
-        private void OnSeneLoaded(Scene arg0, LoadSceneMode arg1)
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             for(int i = 0; i < bgList.Length; i++)
             {
@@ -40,6 +40,11 @@ namespace ProjectT.Manager
         public void BgSoundVolume(float val)
         {
             mixer.SetFloat("BgSoundVolume", Mathf.Log10(val) * 20);
+        }
+
+        public void SFXVolume(float val)
+        {
+            mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20);
         }
 
         public void SFXPlay(string sfxName, AudioClip clip)
