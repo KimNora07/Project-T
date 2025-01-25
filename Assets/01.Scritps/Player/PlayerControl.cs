@@ -3,6 +3,7 @@ namespace ProjectT.Player
     //Systems
     using System.Collections;
     using System.Collections.Generic;
+    using System.Threading;
 
     //UnityEngine
     using UnityEngine;
@@ -10,19 +11,28 @@ namespace ProjectT.Player
 
     public class PlayerControl : MonoBehaviour
     {
+        //[Header("PlayerInfo")]
+
+
+        [Space(10)]
         [Header("PlayerFly Setting")]
-        [SerializeField] private float minFlyDeg                    = default;
-        [SerializeField] private float maxFlyDeg                    = default;
-        [SerializeField] private float flyLimitY                    = default;
-        [SerializeField] private float flyPower                     = default;
-        [SerializeField] private float flyingGravityScale           = default;
-        [SerializeField] private float fallingGravityScale          = default;
-        [SerializeField] private float groundCheckRange             = default;
-        [SerializeField] private LayerMask groundLayer              = default;
-        [SerializeField] private KeyCode flyKey                     = KeyCode.None;
+        [SerializeField] private float minFlyDeg                  = default;
+        [SerializeField] private float maxFlyDeg                  = default;
+        [SerializeField] private float flyLimitY                  = default;
+        [SerializeField] private float flyPower                   = default;
+        [SerializeField] private float flyingGravityScale         = default;
+
+        [Space(10)]
+        [Header("PlayerJump Setting")]
+        [SerializeField] private float jumpPower                  = default;
+        [SerializeField] private float fallingGravityScale        = default;
+        [SerializeField] private float groundCheckRange           = default;
+        [SerializeField] private LayerMask groundLayer            = default;
+        [SerializeField] private KeyCode jumpKey                  = KeyCode.None;
 
         [Space(10)]
         [Header("PlayerShoot Setting")]
+        [SerializeField] private float fireCoolTime               = default;
         [SerializeField] private int bulletSpreadAngleRange       = default;
         [SerializeField] private GameObject bubblePrefab          = default;
         [SerializeField] private Transform bubbleGunPosition      = default;
@@ -32,8 +42,10 @@ namespace ProjectT.Player
 
         private Rigidbody2D rb = null;
 
-        private float angle = default;
-        private bool isFlying = default;
+        private float angle     = default;
+        private float timer     = default;
+
+        private bool isCanFire  = default;
 
         private void Awake()
         {
@@ -47,8 +59,6 @@ namespace ProjectT.Player
 
         private void Update()
         {
-            Debug.Log(angle);
-
             Mathf.FloorToInt(angle);
 
             //reset GraityScale
@@ -67,12 +77,9 @@ namespace ProjectT.Player
             }
 
 
-
             SpinGun();
-            Shoot();
+            Shooting();
         }
-
-        //Player Jump
         private void Fly(float flyPower)
         {
             if (Input.GetMouseButtonDown(0))
@@ -105,13 +112,32 @@ namespace ProjectT.Player
             bubbleGunPosition.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        private void Shoot()
+        private void Shooting()
         {
-            if(Input.GetMouseButton(0))
+            if(isCanFire)
             {
-                BulletSpread();
-                Instantiate(bubblePrefab, firePosition.position, Quaternion.Euler(0, 0, angle));
+                if(Input.GetMouseButton(0))
+                {
+                    FireBubble();
+                    timer = 0f;
+                    isCanFire = false;
+                }
             }
+            else
+            {
+                timer += Time.deltaTime;
+
+                if(timer >= fireCoolTime)
+                {
+                    isCanFire = true;
+                }
+            }
+        }
+
+        private void FireBubble()
+        {
+            BulletSpread();
+            Instantiate(bubblePrefab, firePosition.position, Quaternion.Euler(0, 0, angle));
         }
 
         private void BulletSpread()
