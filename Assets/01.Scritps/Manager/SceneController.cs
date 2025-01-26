@@ -43,10 +43,10 @@ namespace ProjectT.Manager
         }
         private IEnumerator TaptoStart()
         {
-            //Wait Animation
-
+            
             //Fade In/Out
             SceneManager.LoadScene("LobbyScene");
+            GameManager.instance.isTitle = false;
             yield return null;
         }
 
@@ -59,6 +59,7 @@ namespace ProjectT.Manager
         private void StartGameCoroutine()
         {
             SceneManager.LoadScene("MainGameScene");
+            GameManager.instance.isInGame = true;
 
         }
 
