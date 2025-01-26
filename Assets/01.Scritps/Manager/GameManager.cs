@@ -65,6 +65,14 @@ namespace ProjectT.Manager
             }
         }
 
+        public void Continue()
+        {
+            if (optionPanel != null)
+            {
+                optionPanel.SetActive(!optionPanel.activeSelf);
+            }
+        }
+        
         public void ExitGame()
         {
             if (isInGame)

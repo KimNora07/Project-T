@@ -1144,6 +1144,7 @@ GameObject:
   - component: {fileID: 1610479177}
   - component: {fileID: 1610479179}
   - component: {fileID: 1610479178}
+  - component: {fileID: 1610479180}
   m_Layer: 5
   m_Name: startTXT
   m_TagString: Untagged
@@ -1267,6 +1268,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610479176}
   m_CullTransparentMesh: 1
+--- !u!114 &1610479180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610479176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f855977aa2ae134da99026f9062821e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1610479178}
+  fadeDuration: 0.5
+  delayBetweenFades: 0.2
 --- !u!1 &1630105113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,9 +2775,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProjectT.ResolutionOption.VideoOption, Assembly-CSharp
-        m_MethodName: OkBtnClik
+      - m_Target: {fileID: 1171738070}
+        m_TargetAssemblyTypeName: ProjectT.Manager.GameManager, Assembly-CSharp
+        m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
