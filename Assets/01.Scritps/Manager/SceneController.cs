@@ -16,13 +16,19 @@ namespace ProjectT.Manager
 
         private bool isOpenDoor = default;
 
-        private void Start()
+        private void OnEnable()
         {
             FadeManager.instance.FadeOut();
+
         }
 
         private void Update()
         {
+            if(backgroundImage == null || closeDoorSprite == null || openDoorSprite == null)
+            {
+                return;
+            }
+
             if(IsPointerOverUI())
             {
                 backgroundImage.sprite = openDoorSprite;
@@ -39,15 +45,12 @@ namespace ProjectT.Manager
 
         public void StartTouch()
         {
-            StartCoroutine(TaptoStart());
+            FadeManager.instance.FadeIn(TaptoStart);
         }
-        private IEnumerator TaptoStart()
+        private void TaptoStart()
         {
-            
-            //Fade In/Out
             SceneManager.LoadScene("LobbyScene");
             GameManager.instance.isTitle = false;
-            yield return null;
         }
 
         public void StartGameOnDoorPress()
