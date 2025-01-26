@@ -46,7 +46,7 @@ namespace ProjectT.Manager
                 {
                     score += 1;
                     timer -= 1f;
-                    scoreText.text = score.ToString();
+                    scoreText.text = $"Score: {score.ToString()}";
                 }
             }
 

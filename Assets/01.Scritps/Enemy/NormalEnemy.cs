@@ -1,3 +1,4 @@
+using ProjectT.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,9 @@ public class NormalEnemy : Enemy
 {
     public EnemyType currentEnemyType = EnemyType.Dirty;
 
-    public const float bubbleLevel1 = 0.5f;
-    public const float bubbleLevel2 = 0.75f;
-    public const float bubbleLevel3 = 1f;
+    public const float bubbleLevel1 = 0.75f;
+    public const float bubbleLevel2 = 1.25f;
+    public const float bubbleLevel3 = 2f;
 
     public GameObject bubbleObject;
 
@@ -27,6 +28,7 @@ public class NormalEnemy : Enemy
     private void OnChangedClean()
     {
         animator.runtimeAnimatorController = changeCleanAnimator;
+        GameManager.instance.score += getScore;
         bubbleObject.SetActive(false);
         currentEnemyType = EnemyType.Clean;
     }

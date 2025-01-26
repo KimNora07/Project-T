@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8490447074424385809}
   - component: {fileID: 7245560499036257177}
   m_Layer: 8
-  m_Name: MrDirt
+  m_Name: MrHeavyDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

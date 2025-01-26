@@ -9,6 +9,9 @@ public class Tornado : BossEnemy
     public GameObject effectObject1;
     public GameObject effectObject2;
 
+    public delegate void TornadoDelegate();
+    public event TornadoDelegate OnDeleted;
+
     private IEnumerator SummonTime()
     {
         float rand = Random.Range(0.5f, 2f);
@@ -33,5 +36,10 @@ public class Tornado : BossEnemy
     public void OnEffect2()
     {
         effectObject2.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        OnDeleted?.Invoke();
     }
 }

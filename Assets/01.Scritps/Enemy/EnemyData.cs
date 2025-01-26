@@ -7,6 +7,7 @@ public class EnemyData : ScriptableObject
     public int      dirtyLevel;
     public float    maxDirtyGuage;
     public float    moveSpeed;
+    public int      getScore;
 
     public AnimatorOverrideController changeCleanAnimator;
 }

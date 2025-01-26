@@ -10,12 +10,4 @@ public class BossEnemy : Enemy
     {
         ChangeState(new SummonDustState());
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            ChangeState(new SplitState());
-        }
-    }
 }

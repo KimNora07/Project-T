@@ -18,9 +18,15 @@ public class MrDirt : NormalEnemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bubble"))
+        if (collision.CompareTag("Bubble") && currentEnemyType == EnemyType.Dirty)
         {
-            currentDirtyGuage -= 0.25f;
+            currentDirtyGuage -= 1f;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Berrier"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }

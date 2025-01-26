@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float  maxDirtyGuage;
     public float  currentDirtyGuage;
     [HideInInspector] public float  moveSpeed;
+    [HideInInspector] public int getScore;
     [HideInInspector] public AnimatorOverrideController changeCleanAnimator;
     #endregion
 
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
         this.maxDirtyGuage = data.maxDirtyGuage;
         this.currentDirtyGuage = maxDirtyGuage;
         this.moveSpeed = data.moveSpeed;
+        this.getScore = data.getScore;
         if(data.changeCleanAnimator != null)
         {
             this.changeCleanAnimator = data.changeCleanAnimator;

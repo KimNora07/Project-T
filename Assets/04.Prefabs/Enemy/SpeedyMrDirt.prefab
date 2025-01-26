@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8490447074424385809}
   - component: {fileID: 7245560499036257177}
   m_Layer: 8
-  m_Name: MrDirt
+  m_Name: SpeedyMrDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddb5565e9810de48bca28b3605b8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 9711aef6d59d96f43a55f51130970d05, type: 2}
+  data: {fileID: 11400000, guid: c177aa5bae1449040b430e362783bd32, type: 2}
   body: {fileID: 1972240358413632477}
   animator: {fileID: 4142934786029119708}
   enemyName: 
