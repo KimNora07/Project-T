@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public string enemyName;
     [HideInInspector] public int    dirtyLevel;    
     [HideInInspector] public float  maxDirtyGuage;
-    [HideInInspector] public float  currentDirtyGuage;
+    public float  currentDirtyGuage;
     [HideInInspector] public float  moveSpeed;
     [HideInInspector] public AnimatorOverrideController changeCleanAnimator;
     #endregion
