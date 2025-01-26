@@ -25,7 +25,7 @@ public class FadeManager : MonoBehaviour
     }
 
     //페이드 인
-    public void FadeIn(Action function)
+    public void FadeIn(Action function = null)
     {
         fadeCanvas.gameObject.SetActive(true);
         anim.SetTrigger("FadeIn");
@@ -33,14 +33,14 @@ public class FadeManager : MonoBehaviour
     }
 
     //페이드 아웃
-    public void FadeOut(Action function)
+    public void FadeOut(Action function = null)
     {
         fadeCanvas.gameObject.SetActive(true);
         anim.SetTrigger("FadeOut");
         StartCoroutine(Co_FadeOut(function));
     }
 
-    private IEnumerator Co_FadeOut(Action function)
+    private IEnumerator Co_FadeOut(Action function = null)
     {
         yield return new WaitForSeconds(GetClipTime("FadeOut"));
         if (function != null)
@@ -50,7 +50,7 @@ public class FadeManager : MonoBehaviour
         fadeCanvas.gameObject.SetActive(false);
         StopAllCoroutines();
     }
-    private IEnumerator Co_FadeIn(Action function)
+    private IEnumerator Co_FadeIn(Action function = null)
     {
         yield return new WaitForSeconds(GetClipTime("FadeIn"));
         if (function != null)
