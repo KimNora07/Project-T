@@ -13,10 +13,10 @@ namespace ProjectT.Manager
         }
         private IEnumerator TaptoStart()
         {
-            //Wait Animation
-
+            
             //Fade In/Out
             SceneManager.LoadScene("LobbyScene");
+            GameManager.instance.isTitle = false;
             yield return null;
         }
 
@@ -33,6 +33,7 @@ namespace ProjectT.Manager
             yield return new WaitForSeconds(2);
             //Fade In/Out
             SceneManager.LoadScene("MainGameScene");
+            GameManager.instance.isInGame = true;
 
         }
     }

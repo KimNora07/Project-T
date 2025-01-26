@@ -12,6 +12,7 @@ namespace ProjectT.Manager
         public TMP_Text scoreText;
         private float timer = 0f;
         public bool isInGame = false;
+        public bool isTitle = false;
 
         [SerializeField] private GameObject optionPanel;
 
@@ -32,8 +33,13 @@ namespace ProjectT.Manager
             else
             {
                 Destroy(gameObject);
-                Debug.Log("¿¿");
             }
+        }
+
+        private void Start()
+        {
+            optionPanel.SetActive(false);
+            isTitle = true;
         }
 
         private void Update()
@@ -50,7 +56,7 @@ namespace ProjectT.Manager
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !isTitle)
             {
                 if (optionPanel != null)
                 {
@@ -61,8 +67,16 @@ namespace ProjectT.Manager
 
         public void ExitGame()
         {
-            Debug.Log("Exit Game");
-            Application.Quit();
+            if (isInGame)
+            {
+                SceneManager.LoadScene("LobbyScene");
+                isInGame = false;
+            }
+            else
+            {
+                Debug.Log("Exit Game");
+                Application.Quit();
+            }
         }
     }
 }

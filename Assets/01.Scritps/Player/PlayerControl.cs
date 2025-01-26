@@ -67,7 +67,7 @@ namespace ProjectT.Player
         {
             Mathf.FloorToInt(angle);
 
-            Debug.Log(CheckGround());
+            //Debug.Log(CheckGround());
 
             if(rb.velocity.y < 0)
             {
