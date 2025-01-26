@@ -22,30 +22,6 @@ public class NormalEnemy : Enemy
     void Start()
     {
         onDirtyGuageToZeroEvent += OnChangedClean;
-        //ChangeState(new RunState());
-    }
-
-    void Update()
-    {
-        //currentState?.Updated(this);
-
-        if (currentDirtyGuage <= 0)
-        {
-            onDirtyGuageToZeroEvent?.Invoke();
-        }
-
-        if (dirtyGuagePercent <= 0.75f && dirtyGuagePercent > 0.5f)
-        {
-            bubbleObject.transform.localScale = new Vector3(bubbleLevel1, bubbleLevel1, bubbleLevel1);
-        }
-        else if (dirtyGuagePercent <= 0.5f && dirtyGuagePercent > 0.25f)
-        {
-            bubbleObject.transform.localScale = new Vector3(bubbleLevel2, bubbleLevel2, bubbleLevel2);
-        }
-        else if (dirtyGuagePercent <= 0.25f)
-        {
-            bubbleObject.transform.localScale = new Vector3(bubbleLevel3, bubbleLevel3, bubbleLevel3);
-        }
     }
 
     private void OnChangedClean()
@@ -53,5 +29,26 @@ public class NormalEnemy : Enemy
         animator.runtimeAnimatorController = changeCleanAnimator;
         bubbleObject.SetActive(false);
         currentEnemyType = EnemyType.Clean;
+    }
+
+    public void BubbleSize()
+    {
+        if (currentDirtyGuage <= 0)
+        {
+            onDirtyGuageToZeroEvent?.Invoke();
+        }
+
+        if (currentDirtyGuage / maxDirtyGuage <= 0.75f && currentDirtyGuage / maxDirtyGuage > 0.5f)
+        {
+            bubbleObject.transform.localScale = new Vector3(bubbleLevel1, bubbleLevel1, bubbleLevel1);
+        }
+        else if (currentDirtyGuage / maxDirtyGuage <= 0.5f && currentDirtyGuage / maxDirtyGuage > 0.25f)
+        {
+            bubbleObject.transform.localScale = new Vector3(bubbleLevel2, bubbleLevel2, bubbleLevel2);
+        }
+        else if (currentDirtyGuage / maxDirtyGuage <= 0.25f)
+        {
+            bubbleObject.transform.localScale = new Vector3(bubbleLevel3, bubbleLevel3, bubbleLevel3);
+        }
     }
 }
